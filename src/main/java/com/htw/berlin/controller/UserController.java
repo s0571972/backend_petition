@@ -14,12 +14,18 @@ public class UserController {
 
     @Autowired
     UserService userService;
-
-    @PostMapping("/user")
+    @GetMapping("/user/{userEmail}/password/{userPassword}")
+    @CrossOrigin
+    public UserPetition getUserByEmailPassword(@PathVariable String userEmail, @PathVariable String userPassword){
+        return  userService.getUserByEmailPassword(userEmail, userPassword);
+    }
+    @PostMapping("/register_user")
+    @CrossOrigin
     public UserPetition createUser(@RequestBody UserPetition userPetition){
         return  userService.save(userPetition);
     }
     @GetMapping("/users")
+    @CrossOrigin
     public List<UserPetition> getUsers(){
         return userService.getUsers();
     }

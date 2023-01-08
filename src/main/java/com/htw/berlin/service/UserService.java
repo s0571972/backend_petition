@@ -21,11 +21,15 @@ public class UserService {
         return  userRepository.findById(Id).orElseThrow();
     }
 
-    public void deleteUserById (Long Id){
+    public void deleteUserById (Long Id) {
         userRepository.deleteById(Id);
     }
 
     public List<UserPetition> getUsers(){
         return (List<UserPetition>) userRepository.findAll();
+    }
+
+    public UserPetition getUserByEmailPassword (String userEmail, String userPassword){
+        return  userRepository.getUserByEmailPassword(userEmail,userPassword);
     }
 }

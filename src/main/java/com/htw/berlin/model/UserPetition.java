@@ -3,19 +3,43 @@ package com.htw.berlin.model;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 public class UserPetition {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-
     private Long id;
 
+    @Column(nullable = false)
     private String firstName;
+    @Column(nullable = false)
     private String lastName;
 
-    private String email;
+    public String getUserPassword() {
+        return userPassword;
+    }
 
+    public void setUserPassword(String password) {
+        this.userPassword = password;
+    }
+
+    @Column(nullable = false)
+    private String userPassword;
+
+    @Column(nullable = false)
+    private String userEmail;
+
+    public String getFreeText() {
+        return freeText;
+    }
+
+    public void setFreeText(String freeText) {
+        this.freeText = freeText;
+    }
+    @Column(nullable = true)
+    private String freeText;
 
     public UserPetition() {
 
@@ -50,12 +74,13 @@ public class UserPetition {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUserEmail(String email) {
+        this.userEmail = email;
     }
+
 }
 

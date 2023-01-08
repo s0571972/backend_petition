@@ -21,10 +21,15 @@ public class PetitionService {
         return  petitionRepository.findById(Id).orElseThrow();
     }
 
-    public void deletePetitionById (Long Id){
-        petitionRepository.deleteById(Id);
+    public void deletePetitionById (Long Id, Long userId){
+        Petition petition = getPetitionById(Id);
+        if(petition.getUserId() == userId)
+            petitionRepository.deleteById(Id);
     }
 
+    public  List<Petition> getUserPetition(String userId){
+        return petitionRepository.getPetitionUser(userId);
+    }
     public List<Petition> getPetitions(){
         return (List<Petition>) petitionRepository.findAll();
     }

@@ -1,12 +1,10 @@
 package com.htw.berlin.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.util.Set;
 
 @Entity
 public class Petition {
@@ -52,6 +50,16 @@ public class Petition {
     private Date petitionDate;
     private int petitionDuration;
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    private  int userId;
+
     public Petition() {
 
     }
@@ -67,6 +75,7 @@ public class Petition {
     public void setId(Long id) {
         this.id = id;
     }
+
 
 
 }
